@@ -15,6 +15,13 @@ body
 	font-weight: 400;
 }
 
+.center-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
 /* start all section */
 #home,
 #home .fp-slide,
