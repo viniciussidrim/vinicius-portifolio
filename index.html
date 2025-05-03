@@ -1,291 +1,731 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-	<meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinícius Sidrim | Desenvolvedor Full Stack</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #121212;
+            --secondary: #1e1e1e;
+            --accent: #e91e63;
+            --text: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --hover: #2d2d2d;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-	<title>Dev Vinícius Sidrim</title>
-	<meta name="keywords" content="">
-	<meta name="description" content="">
-	<meta name="author" content="templatemo">
-	<!-- 
-        Lavish HTML CSS Template
-        https://templatemo.com/tm-458-lavish
-        -->
+        .bg-gradient {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+        }
 
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+        .accent {
+            color: var(--accent);
+        }
+        
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #c2185b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+        }
+        
+        .card {
+            background-color: var(--secondary);
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .tech-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .tech-icon:hover {
+            transform: scale(1.15);
+            color: var(--accent);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background-color: #333;
+            border-radius: 3px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: var(--accent);
+            border-radius: 3px;
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        input, textarea {
+            background-color: #2d2d2d;
+            border: 1px solid #3d3d3d;
+            color: var(--text);
+        }
+        
+        input:focus, textarea:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
 
-	<!-- animate -->
-	<link rel="stylesheet" href="css/animate.min.css">
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<!-- font-awesome -->
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<!-- google font -->
-	<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700,800' rel='stylesheet' type='text/css'>
-	<!-- fullpage -->
-	<link rel="stylesheet" href="css/jquery.fullPage.css">
-	<!-- custom -->
-	<link rel="stylesheet" href="css/templatemo-style.css">
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid var(--accent);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
 
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent); }
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Header -->
+    <header class="fixed w-full bg-opacity-90 bg-gray-900 backdrop-filter backdrop-blur-lg z-50">
+        <div class="container mx-auto px-4 py-4">
+            <nav class="flex justify-between items-center">
+                <div>
+                    <a href="#home" class="text-2xl font-bold">
+                        <span class="text-white">&lt;</span>
+                        <span class="accent">VS</span>
+                        <span class="text-white">/&gt;</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-300 hover:text-white">Home</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-white">Sobre</a>
+                    <a href="#skills" class="nav-link text-gray-300 hover:text-white">Habilidades</a>
+                    <a href="#experience" class="nav-link text-gray-300 hover:text-white">Experiência</a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-white">Contato</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-white focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </nav>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden bg-gray-900 mt-4 p-4 rounded-lg">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="text-gray-300 hover:text-white">Home</a>
+                    <a href="#about" class="text-gray-300 hover:text-white">Sobre</a>
+                    <a href="#skills" class="text-gray-300 hover:text-white">Habilidades</a>
+                    <a href="#experience" class="text-gray-300 hover:text-white">Experiência</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white">Contato</a>
+                </div>
+            </div>
+        </div>
+    </header>
 
-	<div id="fullpage">
+    <!-- Hero Section -->
+    <section id="home" class="h-screen flex items-center bg-gradient">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 animate-on-scroll">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                        Olá, sou
+                        <span class="accent typewriter">Vinícius Sidrim</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 text-gray-300">Desenvolvedor Full Stack</p>
+                    <p class="text-gray-400 mb-10 max-w-lg">Soluções digitais com foco em tecnologias modernas, performance e experiência do usuário.</p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="btn-primary px-6 py-3 rounded-lg font-semibold">Entre em Contato</a>
+                        <a href="#skills" class="px-6 py-3 border border-gray-600 rounded-lg hover:border-gray-400 transition-all font-semibold">Ver Habilidades</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mt-10 md:mt-0 flex justify-center animate-on-scroll" style="animation-delay: 0.3s">
+                    <div class="w-64 h-64 md:w-96 md:h-96 rounded-full bg-gray-800 flex items-center justify-center relative overflow-hidden border-4 border-gray-700">
+                        <!-- Substituindo o texto VS pela imagem -->
+                        <img src="./images/vinicius.jpeg" alt="Vinícius Sidrim" class="w-full h-full object-cover">
+                        <!-- Mantendo os efeitos de círculos coloridos -->
+                        <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-accent opacity-20 rounded-full"></div>
+                        <div class="absolute -top-10 -left-10 w-40 h-40 bg-accent opacity-20 rounded-full"></div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </section>
 
-		<!-- start home -->
-		<div id="home" class="section">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-2"></div>
-					<div class="col-md-8 wow fadeIn" data-wow-delay="0.9s">
-						<h2>Olá, seja bem vindo!</h2>
-						</br>
-						<h4>Me chamo Vinícius, e irei te guiar pela minha trajetória</h4>
-						</br>
-						<p>
-							Sou um Desenvolvedor Full Stack a cerca de 4 anos, utilizo diariamente o PHP para 
-							a criação de simples aplicações até aplicações de grande porte como ERPs. Trabalho,
-							estudo e busco sempre me manter atualizado sobre as novidades.
-							Atuo diretamente com um grande ERP, desde o 
-							simples login de usuário até a integração de todo o financeiro em diversos bancos.
-							Sou lider técnico em diversos projetos como desenvolvimento de chatbots ou
-							mesmo projetos de BI. Realizo a manutenção de infra local desde a criação de vps
-							até a configuração de import de base de dados.
-						</p>
-						</br>
-						<h2 class="rotate">PHP, JavaScript, AngularJs, NodeJS, Shell Script, MySQL, PostgreSQL & SQL, Python, Docker & LXC & Kubernets, Jenkins, Linux,
-							FluterFlow, Nginx & Apache, VPS, APIS</h2>
-						<a href="#work" class="btn btn-default smoothScroll wow fadeInUp" data-wow-delay="1s">Mais
-							Informações</a>
-					</div>
-					<div class="col-md-2"></div>
-				</div>
-			</div>
-		</div>
-		<!-- end home -->
+    <!-- About Section -->
+    <section id="about" class="section bg-gradient">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-2">Sobre <span class="accent">Mim</span></h2>
+                <div class="w-16 h-1 bg-accent mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 pr-0 md:pr-10 mb-10 md:mb-0 animate-on-scroll">
+                    <h3 class="text-2xl font-semibold mb-4">Quem sou eu?</h3>
+                    <p class="mb-4 text-gray-300">
+                        Sou <span class="accent font-semibold">Desenvolvedor Full Stack</span> com mais de 4 anos de experiência, 
+                        atuando diretamente em novas soluções como criação de landpages personalizadas, implementações 
+                        em ERPs e ferramentas complementares, sistemas de gestão, emissão de cobranças e integrações 
+                        com APIs de terceiros para resolver desafios complexos do dia a dia corporativo.
 
-		<!-- start work -->
-		<div id="work" class="section">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 wow bounce">
-						<h2>Hard Skills</h2>
-					</div>
-				</div>
+                    </p>
+                    <p class="mb-6 text-gray-300">
+                        Trabalho, estudo e busco sempre me manter atualizado sobre as novidades do mercado de tecnologia, 
+                        tanto em backend quanto em frontend. Atualmente, atuo com tecnologias como PHP, TypeScript, 
+                        JavaScript, Angular e MySQL, em um ambiente totalmente hospedado na AWS.
+                    </p>
+                    <p class="mb-6 text-gray-300">
+                        Atuei como líder técnico em diversos projetos, sendo responsável pelo início e desenvolvimento 
+                        de soluções como chatbots, sistemas de Business Intelligence (BI), integrações com serviços externos, 
+                        além da criação de sistemas robustos com infraestrutura de alta disponibilidade, monitoramento e 
+                        gerenciamento de máquinas em nuvem.
+                    </p>
+                    <p class="mb-6 text-gray-300">
+                        Tenho experiência em todo o ciclo de desenvolvimento, desde a concepção até a entrega e manutenção, 
+                        sempre com foco em estabilidade, escalabilidade e segurança.
+                    </p>
+                </div>
+                <div class="md:w-1/2 animate-on-scroll" style="animation-delay: 0.3s">
+                    <div class="card p-6">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-4 text-center">
+                                <i class="fas fa-code text-4xl accent mb-2"></i>
+                                <h4 class="font-semibold">Desenvolvimento</h4>
+                                <p class="text-sm text-gray-400">Aplicações web e APIs</p>
+                            </div>
+                            <div class="p-4 text-center">
+                                <i class="fas fa-database text-4xl accent mb-2"></i>
+                                <h4 class="font-semibold">Banco de Dados</h4>
+                                <p class="text-sm text-gray-400">Modelagem e Otimização</p>
+                            </div>
+                            <div class="p-4 text-center">
+                                <i class="fas fa-server text-4xl accent mb-2"></i>
+                                <h4 class="font-semibold">DevOps</h4>
+                                <p class="text-sm text-gray-400">Infraestrutura e CI/CD</p>
+                            </div>
+                            <div class="p-4 text-center">
+                                <i class="fas fa-users-cog text-4xl accent mb-2"></i>
+                                <h4 class="font-semibold">Liderança</h4>
+                                <p class="text-sm text-gray-400">Gestão de Projetos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-				<div class="row">
-					<div class="col-md-4 col-xs-11 wow fadeInUp" data-wow-delay="0.6s">
-						<div class="media">
-							<div class="media-object media-left">
-								<i class="fa fa-barcode"></i>
-							</div>
-							<div class="media-body">
-								<h3 class="media-heading">Plataformas de Pagamento</h3>
-								<p>
-									Experiência com integradores de pagamento como (GerenciaNet,
-									Widepay e Sicoob) e tambem em diversos modelos de convênios
-									bancários CNAB 240 e 400.
-								</p>
-							</div>
-						</div>
-					</div>
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-2">Minhas <span class="accent">Habilidades</span></h2>
+                <div class="w-16 h-1 bg-accent mx-auto"></div>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">
+                    Tecnologias e ferramentas que uso no dia a dia para desenvolver soluções robustas e escaláveis.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="card p-6 text-center animate-on-scroll">
+                    <i class="fab fa-php text-5xl mb-4 tech-icon"></i>
+                    <h3 class="text-xl font-semibold">PHP</h3>
+                </div>
+                
+                <div class="card p-6 text-center animate-on-scroll" style="animation-delay: 0.1s">
+                    <i class="fab fa-js text-5xl mb-4 tech-icon"></i>
+                    <h3 class="text-xl font-semibold">JavaScript</h3>
+                </div>
+                
+                <div class="card p-6 text-center animate-on-scroll" style="animation-delay: 0.2s">
+                    <i class="fab fa-angular text-5xl mb-4 tech-icon"></i>
+                    <h3 class="text-xl font-semibold">AngularJS</h3>
+                </div>
+                
+                <div class="card p-6 text-center animate-on-scroll" style="animation-delay: 0.3s">
+                    <i class="fab fa-node-js text-5xl mb-4 tech-icon"></i>
+                    <h3 class="text-xl font-semibold">NodeJS</h3>
+                </div>
+                
+                <div class="card p-6 text-center animate-on-scroll" style="animation-delay: 0.1s">
+                    <i class="fas fa-terminal text-5xl mb-4 tech-icon"></i>
+                    <h3 class="text-xl font-semibold">Shell Script</h3>
+                </div>
+                
+                <div class="card p-6 text-center animate-on-scroll" style="animation-delay: 0.2s">
+                    <i class="fas fa-database text-5xl mb-4 tech-icon"></i>
+                    <h3 class="text-xl font-semibold">MySQL/PostgreSQL</h3>
+                </div>
+                
+                <div class="card p-6 text-center animate-on-scroll" style="animation-delay: 0.3s">
+                    <i class="fas fa-cloud text-5xl mb-4 tech-icon"></i>
+                    <h3 class="text-xl font-semibold">AWS</h3>
+                </div>
+                
+                <div class="card p-6 text-center animate-on-scroll" style="animation-delay: 0.4s">
+                    <i class="fab fa-docker text-5xl mb-4 tech-icon"></i>
+                    <h3 class="text-xl font-semibold">Docker/Kubernetes</h3>
+                </div>
+            </div>
+            
+            <div class="mt-16">
+                <h3 class="text-2xl font-semibold mb-6 text-center">Outras tecnologias</h3>
+                <div class="flex flex-wrap justify-center gap-6 animate-on-scroll">
+                    <div class="tech-icon text-4xl px-4 py-2"><i class="fab fa-jenkins"></i></div>
+                    <div class="tech-icon text-4xl px-4 py-2"><i class="fab fa-linux"></i></div>
+                    <div class="tech-icon text-4xl px-4 py-2"><i class="fab fa-html5"></i></div>
+                    <div class="tech-icon text-4xl px-4 py-2"><i class="fab fa-css3-alt"></i></div>
+                    <div class="tech-icon text-4xl px-4 py-2"><i class="fas fa-server"></i></div>
+                    <div class="tech-icon text-4xl px-4 py-2"><i class="fas fa-code-branch"></i></div>
+                    <div class="tech-icon text-4xl px-4 py-2"><i class="fab fa-python"></i></div>
+                    <div class="tech-icon text-4xl px-4 py-2"><i class="fas fa-network-wired"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-					<div class="col-md-4 col-xs-11 wow fadeInUp" data-wow-delay="0.6s">
-						<div class="media">
-							<div class="media-object media-left">
-								<i class="fa fa-database"></i>
-							</div>
-							<div class="media-body">
-								<h3 class="media-heading">Experiência com Banco de Dados</h3>
-								<p>
-									Experiência robusta com PostgreSQL, abrangendo desde a
-									configuração da base de dados e backups. Quanto a criação
-									de funções, views e otimização de consultas.
-								</p>
-							</div>
-						</div>
-					</div>
+    <!-- Experience Section -->
+    <section id="experience" class="section bg-gradient">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-2">Experiência <span class="accent">Profissional</span></h2>
+                <div class="w-16 h-1 bg-accent mx-auto"></div>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">
+                    Minha trajetória profissional e projetos relevantes em que trabalhei.
+                </p>
+            </div>
+            
+            <div class="space-y-12">
+                <div class="card p-8 animate-on-scroll">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/4 mb-4 md:mb-0">
+                            <div class="text-sm text-gray-400">2024 - Presente</div>
+                            <div class="text-lg font-semibold accent">Desenvolvedor Full Stack Pleno</div>
+                        </div>
+                        <div class="md:w-3/4 md:pl-8 border-l border-gray-700">
+                            <h4 class="text-xl font-semibold mb-2">Desenvolvimento de ERP</h4>
+                            <p class="text-gray-300 mb-4">
+                                Atuo diariamente com um ERP web voltado para o setor automobilístico, desenvolvido em AngularJS, 
+                                no qual realizo implementações e melhorias em diversos módulos do sistema. Além disso, também 
+                                contribuo em sistemas de gestão complementares, como ferramentas de sincronismo entre diferentes bases 
+                                de dados, scripts bancários e demais projetos fechados, garantindo soluções integradas, funcionais e alinhadas 
+                                às necessidades do negócio.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">JavaScript</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">TypeScript</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PHP</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">MySQL</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">API REST</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">AWS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-					<div class="col-md-4 col-xs-11 wow fadeInUp" data-wow-delay="0.6s">
-						<div class="media">
-							<div class="media-object media-left">
-								<i class="fa"><b>4</b></i>
-							</div>
-							<div class="media-body">
-								<h3 class="media-heading">Anos com desenvovimento de software</h3>
-								<p>
-									Possuo experiência com desenvolvimento de software voltado
-									a linguagem e framworks PHP, como a criação de aplicações
-									tanto em MVC quanto em APIs.
+                <div class="card p-8 animate-on-scroll" style="animation-delay: 0.2s">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/4 mb-4 md:mb-0">
+                            <div class="text-sm text-gray-400">2023 - 2024</div>
+                            <div class="text-lg font-semibold accent">Líder Técnico</div>
+                        </div>
+                        <div class="md:w-3/4 md:pl-8 border-l border-gray-700">
+                            <h4 class="text-xl font-semibold mb-2">Projetos de Chatbots e BI</h4>
+                            <p class="text-gray-300 mb-4">
+                                Liderança técnica em projetos de chatbots para atendimento ao cliente e soluções de Business Intelligence, 
+                                coordenando equipe de desenvolvimento e garantindo a entrega de soluções de qualidade.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PHP</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">JavaScript</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">TypeScript</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">NodeJS</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Python</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PostgreSQL</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">API REST</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-								</p>
-							</div>
-						</div>
-					</div>
+                <div class="card p-8 animate-on-scroll">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/4 mb-4 md:mb-0">
+                            <div class="text-sm text-gray-400">2020 - 2024</div>
+                            <div class="text-lg font-semibold accent">Desenvolvedor Full Stack</div>
+                        </div>
+                        <div class="md:w-3/4 md:pl-8 border-l border-gray-700">
+                            <h4 class="text-xl font-semibold mb-2">Desenvolvimento de ERP</h4>
+                            <p class="text-gray-300 mb-4">
+                                Atuei no desenvolvimento de chatbots, soluções de BI, integrações financeiras, 
+                                além da criação de sistemas robustos com infraestrutura de alta disponibilidade, 
+                                monitoramento e máquinas em nuvem. Também trabalhei com infraestrutura local, 
+                                realizando manutenção em bases de dados, criação de VPSs, ajustes de servidores, 
+                                criação de apps com FlutterFlow e integrações com ferramentas como e WhatsApp e emails
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PHP</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">MySQL</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PostgreSQL</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">JavaScript</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Python</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">API REST</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Docker</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Kubernetes</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">FlutterFlow</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="mt-16">
+                <h3 class="text-2xl font-semibold mb-8 text-center">Projetos Destacados</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="card overflow-hidden animate-on-scroll">
+                        <div class="h-40 bg-gray-700 flex items-center justify-center">
+                            <i class="fas fa-desktop text-5xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-semibold mb-2">Sistemas de ERP</h4>
+                            <p class="text-gray-300 mb-4">
+                                Desenvolvimento de 2 sistemas ERP com foco na integração entre empresa 
+                                e cliente, otimizando processos e melhorando a comunicação entre as partes.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PHP</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Codeigniter</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PostgreSQL</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Docker</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Kubernetes</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">JavaScript</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">TypeScript</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">AngularJS</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">MySQL</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">AWS</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card overflow-hidden animate-on-scroll" style="animation-delay: 0.2s">
+                        <div class="h-40 bg-gray-700 flex items-center justify-center">
+                            <i class="fas fa-mobile text-5xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-semibold mb-2">Aplicativo de assinante</h4>
+                            <p class="text-gray-300 mb-4">
+                                Aplicativo que permite ao usuário consultar boletos, acompanhar informações
+                                 de serviços e acessar dados relacionados de forma prática e centralizada.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">FlutterFlow</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PHP</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">API REST</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PostgreSQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </br>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="card overflow-hidden animate-on-scroll">
+                        <div class="h-40 bg-gray-700 flex items-center justify-center">
+                            <i class="fas fa-chart-bar text-5xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-semibold mb-2">Sistema de BI</h4>
+                            <p class="text-gray-300 mb-4">
+                                Desenvolvimento de um sistema de Business Intelligence integrado ao ERP, 
+                                permitindo análises avançadas e dashboards personalizados.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PHP</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">MySQL</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card overflow-hidden animate-on-scroll" style="animation-delay: 0.2s">
+                        <div class="h-40 bg-gray-700 flex items-center justify-center">
+                            <i class="fas fa-robot text-5xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-semibold mb-2">Chatbot para Atendimento</h4>
+                            <p class="text-gray-300 mb-4">
+                                Chatbot para automatização de atendimento ao cliente, 
+                                integrado com sistemas de CRM e ERP.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PHP</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">NodeJS</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">API REST</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-				</div>
-			</div>
-		</div>
-		<!-- end work -->
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-2">Entre em <span class="accent">Contato</span></h2>
+                <div class="w-16 h-1 bg-accent mx-auto"></div>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">
+                    Tem algum projeto para tirar do papel? Mande uma mensagem!
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-10">
+                <div class="md:w-1/2 animate-on-scroll">
+                    <form onsubmit="enviarWhatsApp(event)" class="card p-6">
+                        <div class="mb-4">
+                            <label for="name" class="block text-sm font-medium text-gray-400 mb-1">Nome</label>
+                            <input type="text" id="name" class="w-full p-3 rounded-lg" placeholder="Seu nome">
+                        </div>
+                        <!-- <div class="mb-4">
+                            <label for="email" class="block text-sm font-medium text-gray-400 mb-1">Email</label>
+                            <input type="email" id="email" class="w-full p-3 rounded-lg" placeholder="seu.email@exemplo.com">
+                        </div>
+                        <div class="mb-4">
+                            <label for="subject" class="block text-sm font-medium text-gray-400 mb-1">Assunto</label>
+                            <input type="text" id="subject" class="w-full p-3 rounded-lg" placeholder="Assunto da mensagem">
+                        </div> -->
+                        <div class="mb-6">
+                            <label for="message" class="block text-sm font-medium text-gray-400 mb-1">Mensagem</label>
+                            <textarea id="message" rows="5" class="w-full p-3 rounded-lg" placeholder="Sua mensagem..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full py-3 px-4 rounded-lg font-semibold">
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="md:w-1/2 animate-on-scroll" style="animation-delay: 0.2s">
+                    <div class="card p-6 mb-6">
+                        <h3 class="text-xl font-semibold mb-4">Informações de Contato</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm text-gray-400">Email</h4>
+                                    <p>viniciussidrim99@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone text-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm text-gray-400">Telefone</h4>
+                                    <p>(84) 99108-3435</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt text-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm text-gray-400">Localização</h4>
+                                    <p>Natal-RN | Brasil</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card p-6">
+                        <h3 class="text-xl font-semibold mb-4">Me Siga nas Redes</h3>
+                        <div class="flex space-x-4">
+                            <a href="https://www.linkedin.com/in/vin%C3%ADcius-sidrim-b68a74142/" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon">
+                                <i class="fab fa-linkedin-in text-xl"></i>
+                            </a>
+                            <a href="https://github.com/viniciussidrim" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            <a href="https://x.com/viniciussidrim" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="https://www.instagram.com/viniciussidrim/" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-		<!-- start about -->
-		<div id="about" class="section">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-xs-11 wow fadeInLeft" data-wow-delay="0.9s">
-						<h2>Desenvolvimento</h2>
-						<h4>Áreas de aptidão</h4>
-						<p>Em cerca de 4 anos de desenvolvimento, meu foco foi voltado a novas features e correções de
-							bugs.</p>
-						<p>Durante esse período, desempenhei atividades diárias que abrangiam a manutenção da
-							infraestrutura, administração de bases de dados e participação ativa em reuniões de
-							alinhamento com os membros da equipe, contribuindo para o sucesso coletivo em diversos
-							projetos.
-						</p>
-					</div>
-					<div class="col-md-6 col-xs-11 wow fadeInRight" data-wow-delay="0.9s">
-						<span class="text-top">Backend<small>95%</small></span>
-						<div class="progress">
-							<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60"
-								aria-valuemin="0" aria-valuemax="100" style="width: 95%;"></div>
-						</div>
-						<span>Frontend<small>50%</small></span>
-						<div class="progress">
-							<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80"
-								aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div>
-						</div>
-						<span>Database<small>80%</small></span>
-						<div class="progress">
-							<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60"
-								aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-						</div>
-						<span>Infraestrutura<small>90%</small></span>
-						<div class="progress">
-							<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60"
-								aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- end about -->
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#home" class="text-2xl font-bold">
+                        <span class="text-white">&lt;</span>
+                        <span class="accent">VS</span>
+                        <span class="text-white">/&gt;</span>
+                    </a>
+                    <p class="text-gray-400 mt-2">Desenvolvedor Full Stack</p>
+                </div>
+                <div class="flex flex-col items-center md:items-end">
+                    <p class="text-gray-400">&copy; 2025 Vinícius Sidrim. Todos os direitos reservados.</p>
+                    <!-- <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Termos</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacidade</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </footer>
 
-		<!-- start portfolio -->
-		<div id="portfolio" class="section">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<h2 class="wow bounce">Portfólio Pessoal</h2>
-					</div>
-					<!-- <div class="col-md-4 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
-						<a href="https://validadorbr.ddns.net/" target="_blank">
-							<div class="portfolio-thumb">
-								<img src="images/validadorBR.png" class="img-responsive" alt="portfolio img">
-								<div class="portfolio-overlay">
-									<h4>Validador CPF</h4>
-									<h5>Autores: Vinícius & João Pedro</h5>
-								</div>
-							</div>
-						</a>
-					</div> -->
-					<div class="col-md-4 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
-						<a href="https://github.com/viniciussidrim/monitoramento-telegram" target="_blank">
-							<div class="portfolio-thumb">
-								<img src="images/monitoramento-telegram.png" class="img-responsive" alt="portfolio img">
-								<div class="portfolio-overlay">
-									<h4>Bot Monitoramento Servidor</h4>
-									<h5>Autor: Vinícius</h5>
-								</div>
-							</div>
-						</a>
-					</div>
-					<!-- <div class="col-md-4 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
-						<div class="portfolio-thumb">
-							<img src="images/portfolio-img3.jpg" class="img-responsive" alt="portfolio img">
-							<div class="portfolio-overlay">
-								<h4>Mobile App</h4>
-								<h5>Author: Kate</h5>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
-						<div class="portfolio-thumb">
-							<img src="images/portfolio-img4.jpg" class="img-responsive" alt="portfolio img">
-							<div class="portfolio-overlay">
-								<h4>Old Artwork</h4>
-								<h5>Author: Catherine</h5>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
-						<div class="portfolio-thumb">
-							<img src="images/portfolio-img5.jpg" class="img-responsive" alt="portfolio img">
-							<div class="portfolio-overlay">
-								<h4>New Animation</h4>
-								<h5>Author: Kathy</h5>
-							</div>
-						</div>
-					</div> -->
-				</div>
-			</div>
-		</div>
-		<!-- end portfolio -->
+    <script>
 
-		<!-- start contact -->
-		<div id="contact" class="section center-content">
-			<div class="container">
-				<div class="row">
-					<div class="wow fadeIn" data-wow-delay="0.6s">
-						<p class="contact-title">Entre em contato</p>
-						<p>Telefone: (84) 99108-3435</p>
-						<p>Email: viniciussidrim99@gmail.com</p>
-						<p>Natal RN - Brasil</p>
-						<br>
-						<p>LINKS</p>
-						<a href="https://github.com/viniciussidrim" target="_blank">Github</a></br>
-						<a href="https://www.linkedin.com/in/vin%C3%ADcius-sidrim-b68a74142/"
-							target="_blank">Linkedin</a></br>
-						<a href="https://wa.me/5584991083435?text=Ol%C3%A1%2C%20vim%20pelo%20seu%20portf%C3%B3lio%20online"
-							target="_blank">WhatsApp</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- end contact -->
+        // envio zap
+        function enviarWhatsApp(event) {
+            event.preventDefault();
+            const nome = document.getElementById('name').value;
+            const mesage = document.getElementById('message').value;
+            const numero = '5584991083435';
+    
+            const mensagem = `Olá, Me chamo ${nome}, gostaria de conversar contigo sobre essa ideia: ${mesage}.`;
+            const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+    
+            window.open(url, '_blank');
+        }
 
-		<!-- start footer -->
-		<footer>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 wow fadeIn" data-wow-delay="0.9s">
-						<p>Utilizado base do modelo Lavish Personal Profile - Copyright &copy; 2018</p>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<!-- end footer -->
-
-	</div>
-
-	<!-- jQuery -->
-	<script src="js/jquery.js"></script>
-	<!-- bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- fullpage -->
-	<script src="js/jquery.fullPage.js"></script>
-	<!-- smoothScroll -->
-	<script src="js/smoothscroll.js"></script>
-	<!-- wow -->
-	<script src="js/wow.min.js"></script>
-	<!-- text rotater -->
-	<script src="js/jquery.simple-text-rotator.js"></script>
-	<!-- custom -->
-	<script src="js/custom.js"></script>
-
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if it's open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Animation on scroll
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        
+        function checkIfInView() {
+            const windowHeight = window.innerHeight;
+            const windowTopPosition = window.scrollY;
+            const windowBottomPosition = windowTopPosition + windowHeight;
+            
+            animateElements.forEach(element => {
+                const elementHeight = element.offsetHeight;
+                const elementTopPosition = element.offsetTop;
+                const elementBottomPosition = elementTopPosition + elementHeight;
+                
+                // Check if element is in view
+                if (
+                    elementBottomPosition >= windowTopPosition && 
+                    elementTopPosition <= windowBottomPosition - 100
+                ) {
+                    element.classList.add('animated');
+                }
+            });
+        }
+        
+        // Initial check
+        window.addEventListener('load', checkIfInView);
+        window.addEventListener('scroll', checkIfInView);
+        window.addEventListener('resize', checkIfInView);
+    </script>
 </body>
-
 </html>
