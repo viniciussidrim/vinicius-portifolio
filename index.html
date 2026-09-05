@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinícius Sidrim | Desenvolvedor Full Stack</title>
+    <title>Vinícius Sidrim | Engenheiro de Software — Infra &amp; Backend</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #121212;
@@ -16,13 +16,17 @@
             --text-secondary: #b0b0b0;
             --hover: #2d2d2d;
         }
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--primary);
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        .font-tech {
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .bg-gradient {
@@ -32,43 +36,52 @@
         .accent {
             color: var(--accent);
         }
-        
+
         .btn-primary {
             background-color: var(--accent);
             color: white;
             transition: all 0.3s ease;
         }
-        
+
         .btn-primary:hover {
             background-color: #c2185b;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
         }
-        
+
+        .btn-secondary {
+            border: 1px solid #4b5563;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: #9ca3af;
+        }
+
         .card {
             background-color: var(--secondary);
             border-radius: 8px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
+
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
-        
+
         .tech-icon {
             transition: all 0.3s ease;
         }
-        
+
         .tech-icon:hover {
             transform: scale(1.15);
             color: var(--accent);
         }
-        
+
         .nav-link {
             position: relative;
         }
-        
+
         .nav-link::after {
             content: '';
             position: absolute;
@@ -79,53 +92,67 @@
             background-color: var(--accent);
             transition: width 0.3s ease;
         }
-        
+
         .nav-link:hover::after {
             width: 100%;
         }
-        
+
+        .lang-toggle-btn {
+            border: 1px solid #4b5563;
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: transparent;
+        }
+
+        .lang-toggle-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
         .social-icon {
             transition: all 0.3s ease;
         }
-        
+
         .social-icon:hover {
             color: var(--accent);
             transform: translateY(-3px);
         }
-        
+
         .section {
             padding: 80px 0;
         }
-        
-        .progress-bar {
-            height: 6px;
-            background-color: #333;
-            border-radius: 3px;
+
+        .metric-placeholder {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            border: 1px dashed #4b5563;
+            border-radius: 6px;
+            padding: 4px 10px;
+            display: inline-block;
         }
-        
-        .progress-fill {
-            height: 100%;
-            background-color: var(--accent);
-            border-radius: 3px;
-        }
-        
+
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
-        
+
         .animated {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         input, textarea {
             background-color: #2d2d2d;
             border: 1px solid #3d3d3d;
             color: var(--text);
         }
-        
+
         input:focus, textarea:focus {
             border-color: var(--accent);
             outline: none;
@@ -158,34 +185,38 @@
         <div class="container mx-auto px-4 py-4">
             <nav class="flex justify-between items-center">
                 <div>
-                    <a href="#home" class="text-2xl font-bold">
+                    <a href="#home" class="text-2xl font-bold font-tech">
                         <span class="text-white">&lt;</span>
                         <span class="accent">VS</span>
                         <span class="text-white">/&gt;</span>
                     </a>
                 </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="nav-link text-gray-300 hover:text-white">Home</a>
-                    <a href="#about" class="nav-link text-gray-300 hover:text-white">Sobre</a>
-                    <a href="#skills" class="nav-link text-gray-300 hover:text-white">Habilidades</a>
-                    <a href="#experience" class="nav-link text-gray-300 hover:text-white">Experiência</a>
-                    <a href="#contact" class="nav-link text-gray-300 hover:text-white">Contato</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-300 hover:text-white" data-i18n="nav.home">Home</a>
+                    <a href="#solucoes" class="nav-link text-gray-300 hover:text-white" data-i18n="nav.solutions">Soluções</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-white" data-i18n="nav.about">Sobre</a>
+                    <a href="#skills" class="nav-link text-gray-300 hover:text-white" data-i18n="nav.skills">Habilidades</a>
+                    <a href="#experience" class="nav-link text-gray-300 hover:text-white" data-i18n="nav.experience">Experiência</a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-white" data-i18n="nav.contact">Contato</a>
+                    <button class="lang-toggle-btn font-tech" aria-label="Toggle language">EN</button>
                 </div>
-                <div class="md:hidden">
+                <div class="md:hidden flex items-center space-x-3">
+                    <button class="lang-toggle-btn font-tech" aria-label="Toggle language">EN</button>
                     <button id="menu-btn" class="text-white focus:outline-none">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
             </nav>
-            
+
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="md:hidden hidden bg-gray-900 mt-4 p-4 rounded-lg">
                 <div class="flex flex-col space-y-4">
-                    <a href="#home" class="text-gray-300 hover:text-white">Home</a>
-                    <a href="#about" class="text-gray-300 hover:text-white">Sobre</a>
-                    <a href="#skills" class="text-gray-300 hover:text-white">Habilidades</a>
-                    <a href="#experience" class="text-gray-300 hover:text-white">Experiência</a>
-                    <a href="#contact" class="text-gray-300 hover:text-white">Contato</a>
+                    <a href="#home" class="text-gray-300 hover:text-white" data-i18n="nav.home">Home</a>
+                    <a href="#solucoes" class="text-gray-300 hover:text-white" data-i18n="nav.solutions">Soluções</a>
+                    <a href="#about" class="text-gray-300 hover:text-white" data-i18n="nav.about">Sobre</a>
+                    <a href="#skills" class="text-gray-300 hover:text-white" data-i18n="nav.skills">Habilidades</a>
+                    <a href="#experience" class="text-gray-300 hover:text-white" data-i18n="nav.experience">Experiência</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white" data-i18n="nav.contact">Contato</a>
                 </div>
             </div>
         </div>
@@ -197,61 +228,77 @@
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 animate-on-scroll">
                     <h1 class="text-4xl md:text-6xl font-bold mb-4">
-                        Olá, sou
+                        <span data-i18n="hero.greeting">Olá, sou</span>
                         <span class="accent typewriter">Vinícius Sidrim</span>
                     </h1>
-                    <p class="text-xl md:text-2xl mb-8 text-gray-300">Desenvolvedor Full Stack</p>
-                    <p class="text-gray-400 mb-10 max-w-lg">Soluções digitais com foco em tecnologias modernas, performance e experiência do usuário.</p>
-                    <div class="flex space-x-4">
-                        <a href="#contact" class="btn-primary px-6 py-3 rounded-lg font-semibold">Entre em Contato</a>
-                        <a href="#skills" class="px-6 py-3 border border-gray-600 rounded-lg hover:border-gray-400 transition-all font-semibold">Ver Habilidades</a>
+                    <p class="text-xl md:text-2xl mb-8 text-gray-300" data-i18n="hero.role">Engenheiro de Software — Infraestrutura Híbrida &amp; Modernização de Sistemas Legados</p>
+                    <p class="text-gray-400 mb-10 max-w-lg" data-i18n="hero.description">Sustento sistemas críticos escritos há décadas — bancos Firebird, ERPs legados — e a infraestrutura moderna que promete substituí-los: AWS a fundo, Docker Swarm, Linux e automação em Go e JavaScript. A maioria dos times cloud-native não sabe lidar com legado; a maioria de quem sustenta legado não domina infra moderna. Eu transito nas duas pontas sem derrubar produção.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://www.linkedin.com/in/viniciussidrim/" target="_blank" rel="noopener" class="btn-primary px-6 py-3 rounded-lg font-semibold" data-i18n="hero.ctaPrimary">Falar no LinkedIn</a>
+                        <a href="#solucoes" class="btn-secondary px-6 py-3 rounded-lg font-semibold" data-i18n="hero.ctaSecondary">O que eu resolvo</a>
                     </div>
                 </div>
                 <div class="md:w-1/2 mt-10 md:mt-0 flex justify-center animate-on-scroll" style="animation-delay: 0.3s">
                     <div class="w-64 h-64 md:w-96 md:h-96 rounded-full bg-gray-800 flex items-center justify-center relative overflow-hidden border-4 border-gray-700">
-                        <!-- Substituindo o texto VS pela imagem -->
                         <img src="./images/vinicius.jpeg" alt="Vinícius Sidrim" class="w-full h-full object-cover">
-                        <!-- Mantendo os efeitos de círculos coloridos -->
                         <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-accent opacity-20 rounded-full"></div>
                         <div class="absolute -top-10 -left-10 w-40 h-40 bg-accent opacity-20 rounded-full"></div>
                     </div>
-                </div>                
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="solucoes" class="section bg-gradient">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-2"><span data-i18n="solutions.titlePrefix">O que eu </span><span class="accent" data-i18n="solutions.titleAccent">resolvo</span></h2>
+                <div class="w-16 h-1 bg-accent mx-auto"></div>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto" data-i18n="solutions.subtitle">
+                    Três frentes onde entrego valor real, sem promessas genéricas de agência.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card p-8 animate-on-scroll">
+                    <i class="fas fa-database text-4xl accent mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-3" data-i18n="solutions.card1.title">Modernização de Sistemas Legados</h3>
+                    <p class="text-gray-300" data-i18n="solutions.card1.text">Bancos Firebird e ERPs que não podem parar. Modernizo camada por camada, sem big-bang rewrite e sem colocar a operação em risco.</p>
+                </div>
+                <div class="card p-8 animate-on-scroll" style="animation-delay: 0.15s">
+                    <i class="fab fa-docker text-4xl accent mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-3" data-i18n="solutions.card2.title">Infraestrutura em Produção</h3>
+                    <p class="text-gray-300" data-i18n="solutions.card2.text">Docker Swarm, AWS e Hetzner sustentando sistemas críticos 24/7, com monitoramento via Grafana e deploy automatizado.</p>
+                </div>
+                <div class="card p-8 animate-on-scroll" style="animation-delay: 0.3s">
+                    <i class="fas fa-network-wired text-4xl accent mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-3" data-i18n="solutions.card3.title">Automação &amp; Integrações</h3>
+                    <p class="text-gray-300" data-i18n="solutions.card3.text">Integrações entre ERP, CRM e gateways fiscais/bancários, eliminando processos manuais e conectando sistemas que nunca foram feitos para conversar entre si.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section bg-gradient">
+    <section id="about" class="section">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-2">Sobre <span class="accent">Mim</span></h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-2"><span data-i18n="about.titlePrefix">Sobre </span><span class="accent" data-i18n="about.titleAccent">Mim</span></h2>
                 <div class="w-16 h-1 bg-accent mx-auto"></div>
             </div>
-            
+
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 pr-0 md:pr-10 mb-10 md:mb-0 animate-on-scroll">
-                    <h3 class="text-2xl font-semibold mb-4">Quem sou eu?</h3>
-                    <p class="mb-4 text-gray-300">
-                        Sou <span class="accent font-semibold">Desenvolvedor Full Stack</span> com mais de 4 anos de experiência, 
-                        atuando diretamente em novas soluções como criação de landpages personalizadas, implementações 
-                        em ERPs e ferramentas complementares, sistemas de gestão, emissão de cobranças e integrações 
-                        com APIs de terceiros para resolver desafios complexos do dia a dia corporativo.
-
+                    <h3 class="text-2xl font-semibold mb-4" data-i18n="about.heading">Quem sou eu?</h3>
+                    <p class="mb-4 text-gray-300" data-i18n="about.p1">
+                        Sou <span class="accent font-semibold">Engenheiro de Software</span> especializado em infraestrutura híbrida: sustento sistemas críticos legados — bancos Firebird, ERPs antigos — e a stack moderna que promete substituí-los, com AWS a fundo, Docker Swarm e Linux no dia a dia. Sou a ponte entre os dois mundos.
                     </p>
-                    <p class="mb-6 text-gray-300">
-                        Trabalho, estudo e busco sempre me manter atualizado sobre as novidades do mercado de tecnologia, 
-                        tanto em backend quanto em frontend. Atualmente, atuo com tecnologias como PHP, TypeScript, 
-                        JavaScript, Angular e MySQL, em um ambiente totalmente hospedado na AWS.
+                    <p class="mb-6 text-gray-300" data-i18n="about.p2">
+                        No dia a dia trabalho com Go, PHP, TypeScript e Node.js no backend, PostgreSQL, MySQL e Firebird como bancos, e Docker Swarm, AWS e Hetzner como infraestrutura — sempre priorizando estabilidade acima de modismo.
                     </p>
-                    <p class="mb-6 text-gray-300">
-                        Atuei como líder técnico em diversos projetos, sendo responsável pelo início e desenvolvimento 
-                        de soluções como chatbots, sistemas de Business Intelligence (BI), integrações com serviços externos, 
-                        além da criação de sistemas robustos com infraestrutura de alta disponibilidade, monitoramento e 
-                        gerenciamento de máquinas em nuvem.
-                    </p>
-                    <p class="mb-6 text-gray-300">
-                        Tenho experiência em todo o ciclo de desenvolvimento, desde a concepção até a entrega e manutenção, 
-                        sempre com foco em estabilidade, escalabilidade e segurança.
+                    <p class="mb-6 text-gray-300" data-i18n="about.p3">
+                        Atuei como líder técnico em projetos de Business Intelligence, chatbots e integrações externas, e hoje sustento infraestrutura de alta disponibilidade para sistemas que não podem cair.
                     </p>
                 </div>
                 <div class="md:w-1/2 animate-on-scroll" style="animation-delay: 0.3s">
@@ -259,23 +306,23 @@
                         <div class="grid grid-cols-2 gap-4">
                             <div class="p-4 text-center">
                                 <i class="fas fa-code text-4xl accent mb-2"></i>
-                                <h4 class="font-semibold">Desenvolvimento</h4>
-                                <p class="text-sm text-gray-400">Aplicações web e APIs</p>
+                                <h4 class="font-semibold" data-i18n="about.card1.title">Desenvolvimento</h4>
+                                <p class="text-sm text-gray-400" data-i18n="about.card1.text">Aplicações web e APIs</p>
                             </div>
                             <div class="p-4 text-center">
                                 <i class="fas fa-database text-4xl accent mb-2"></i>
-                                <h4 class="font-semibold">Banco de Dados</h4>
-                                <p class="text-sm text-gray-400">Modelagem e Otimização</p>
+                                <h4 class="font-semibold" data-i18n="about.card2.title">Banco de Dados</h4>
+                                <p class="text-sm text-gray-400" data-i18n="about.card2.text">Legado e moderno, na mesma stack</p>
                             </div>
                             <div class="p-4 text-center">
                                 <i class="fas fa-server text-4xl accent mb-2"></i>
-                                <h4 class="font-semibold">DevOps</h4>
-                                <p class="text-sm text-gray-400">Infraestrutura e CI/CD</p>
+                                <h4 class="font-semibold" data-i18n="about.card3.title">DevOps</h4>
+                                <p class="text-sm text-gray-400" data-i18n="about.card3.text">Infraestrutura e CI/CD</p>
                             </div>
                             <div class="p-4 text-center">
                                 <i class="fas fa-users-cog text-4xl accent mb-2"></i>
-                                <h4 class="font-semibold">Liderança</h4>
-                                <p class="text-sm text-gray-400">Gestão de Projetos</p>
+                                <h4 class="font-semibold" data-i18n="about.card4.title">Liderança</h4>
+                                <p class="text-sm text-gray-400" data-i18n="about.card4.text">Gestão de Projetos</p>
                             </div>
                         </div>
                     </div>
@@ -285,112 +332,141 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section">
+    <section id="skills" class="section bg-gradient">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-2">Minhas <span class="accent">Habilidades</span></h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-2"><span data-i18n="skills.titlePrefix">Minhas </span><span class="accent" data-i18n="skills.titleAccent">Habilidades</span></h2>
                 <div class="w-16 h-1 bg-accent mx-auto"></div>
-                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">
-                    Tecnologias e ferramentas que uso no dia a dia para desenvolver soluções robustas e escaláveis.
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto" data-i18n="skills.subtitle">
+                    Tecnologias que sustentam desde bancos legados até infraestrutura cloud em produção.
                 </p>
             </div>
-            
+
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div class="card p-6 text-center animate-on-scroll">
-                    <i class="fab fa-php text-5xl mb-4 tech-icon"></i>
-                    <h3 class="text-xl font-semibold">PHP</h3>
+                    <i class="fas fa-database text-5xl mb-4 tech-icon"></i>
+                    <h3 class="text-xl font-semibold font-tech">Firebird</h3>
                 </div>
-                
+
                 <div class="card p-6 text-center animate-on-scroll" style="animation-delay: 0.1s">
-                    <i class="fab fa-js text-5xl mb-4 tech-icon"></i>
-                    <h3 class="text-xl font-semibold">JavaScript</h3>
+                    <i class="fab fa-linux text-5xl mb-4 tech-icon"></i>
+                    <h3 class="text-xl font-semibold font-tech">Linux</h3>
                 </div>
-                
+
                 <div class="card p-6 text-center animate-on-scroll" style="animation-delay: 0.2s">
-                    <i class="fab fa-angular text-5xl mb-4 tech-icon"></i>
-                    <h3 class="text-xl font-semibold">AngularJS</h3>
+                    <i class="fab fa-docker text-5xl mb-4 tech-icon"></i>
+                    <h3 class="text-xl font-semibold font-tech">Docker Swarm</h3>
                 </div>
-                
+
                 <div class="card p-6 text-center animate-on-scroll" style="animation-delay: 0.3s">
-                    <i class="fab fa-node-js text-5xl mb-4 tech-icon"></i>
-                    <h3 class="text-xl font-semibold">NodeJS</h3>
+                    <i class="fas fa-chart-line text-5xl mb-4 tech-icon"></i>
+                    <h3 class="text-xl font-semibold font-tech">Grafana</h3>
                 </div>
-                
+
+                <div class="card p-6 text-center animate-on-scroll">
+                    <i class="fab fa-golang text-5xl mb-4 tech-icon"></i>
+                    <h3 class="text-xl font-semibold font-tech">Go</h3>
+                </div>
+
                 <div class="card p-6 text-center animate-on-scroll" style="animation-delay: 0.1s">
-                    <i class="fas fa-terminal text-5xl mb-4 tech-icon"></i>
-                    <h3 class="text-xl font-semibold">Shell Script</h3>
+                    <i class="fas fa-cloud text-5xl mb-4 tech-icon"></i>
+                    <h3 class="text-xl font-semibold font-tech">AWS</h3>
                 </div>
-                
+
                 <div class="card p-6 text-center animate-on-scroll" style="animation-delay: 0.2s">
                     <i class="fas fa-database text-5xl mb-4 tech-icon"></i>
-                    <h3 class="text-xl font-semibold">SQL</h3>
+                    <h3 class="text-xl font-semibold font-tech">SQL</h3>
                 </div>
-                
+
                 <div class="card p-6 text-center animate-on-scroll" style="animation-delay: 0.3s">
-                    <i class="fas fa-cloud text-5xl mb-4 tech-icon"></i>
-                    <h3 class="text-xl font-semibold">AWS</h3>
-                </div>
-                
-                <div class="card p-6 text-center animate-on-scroll" style="animation-delay: 0.4s">
-                    <i class="fab fa-docker text-5xl mb-4 tech-icon"></i>
-                    <h3 class="text-xl font-semibold">Docker</h3>
+                    <i class="fab fa-php text-5xl mb-4 tech-icon"></i>
+                    <h3 class="text-xl font-semibold font-tech">PHP</h3>
                 </div>
             </div>
-            
+
             <div class="mt-16">
-                <h3 class="text-2xl font-semibold mb-6 text-center">Outras tecnologias</h3>
+                <h3 class="text-2xl font-semibold mb-6 text-center" data-i18n="skills.otherTitle">Outras tecnologias</h3>
                 <div class="flex flex-wrap justify-center gap-6 animate-on-scroll">
+                    <div class="tech-icon text-4xl px-4 py-2"><i class="fab fa-js"></i></div>
+                    <div class="tech-icon text-4xl px-4 py-2"><i class="fab fa-angular"></i></div>
+                    <div class="tech-icon text-4xl px-4 py-2"><i class="fab fa-node-js"></i></div>
+                    <div class="tech-icon text-4xl px-4 py-2"><i class="fas fa-terminal"></i></div>
                     <div class="tech-icon text-4xl px-4 py-2"><i class="fab fa-jenkins"></i></div>
-                    <div class="tech-icon text-4xl px-4 py-2"><i class="fab fa-linux"></i></div>
                     <div class="tech-icon text-4xl px-4 py-2"><i class="fab fa-html5"></i></div>
                     <div class="tech-icon text-4xl px-4 py-2"><i class="fab fa-css3-alt"></i></div>
-                    <div class="tech-icon text-4xl px-4 py-2"><i class="fas fa-server"></i></div>
                     <div class="tech-icon text-4xl px-4 py-2"><i class="fas fa-code-branch"></i></div>
                     <div class="tech-icon text-4xl px-4 py-2"><i class="fab fa-python"></i></div>
-                    <div class="tech-icon text-4xl px-4 py-2"><i class="fas fa-network-wired"></i></div>
-                    <div class="tech-icon text-4xl px-4 py-2"><i class="fab fa-php"></i></div>
-                    <div class="tech-icon text-4xl px-4 py-2"><i class="fab fa-golang"></i></div>
+                </div>
+            </div>
+
+            <div class="mt-16">
+                <h3 class="text-2xl font-semibold mb-6 text-center" data-i18n="skills.databasesTitle">Bancos de Dados</h3>
+                <div class="flex flex-wrap justify-center gap-3 font-tech">
+                    <span class="px-4 py-2 text-sm bg-gray-800 rounded-full">PostgreSQL</span>
+                    <span class="px-4 py-2 text-sm bg-gray-800 rounded-full">MariaDB / MySQL</span>
+                    <span class="px-4 py-2 text-sm bg-gray-800 rounded-full">Firebird</span>
+                    <span class="px-4 py-2 text-sm bg-gray-800 rounded-full">MongoDB</span>
+                    <span class="px-4 py-2 text-sm bg-gray-800 rounded-full">SQL Server</span>
+                    <span class="px-4 py-2 text-sm bg-gray-800 rounded-full">SQLite</span>
+                    <span class="px-4 py-2 text-sm bg-gray-800 rounded-full">Aurora / RDS</span>
+                </div>
+            </div>
+
+            <div class="mt-16">
+                <h3 class="text-2xl font-semibold mb-6 text-center" data-i18n="skills.cloudDevopsTitle">Cloud, DevOps &amp; Observabilidade</h3>
+                <div class="flex flex-wrap justify-center gap-3 font-tech">
+                    <span class="px-4 py-2 text-sm bg-gray-800 rounded-full">EC2 / S3 / CloudFront</span>
+                    <span class="px-4 py-2 text-sm bg-gray-800 rounded-full">Load Balancer</span>
+                    <span class="px-4 py-2 text-sm bg-gray-800 rounded-full">Portainer</span>
+                    <span class="px-4 py-2 text-sm bg-gray-800 rounded-full">GitHub Actions</span>
+                    <span class="px-4 py-2 text-sm bg-gray-800 rounded-full">GHCR</span>
+                    <span class="px-4 py-2 text-sm bg-gray-800 rounded-full">Nginx</span>
+                    <span class="px-4 py-2 text-sm bg-gray-800 rounded-full">Cloudflare</span>
+                    <span class="px-4 py-2 text-sm bg-gray-800 rounded-full">Prometheus</span>
+                    <span class="px-4 py-2 text-sm bg-gray-800 rounded-full">Node Exporter</span>
+                    <span class="px-4 py-2 text-sm bg-gray-800 rounded-full">SonarQube</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="section bg-gradient">
+    <section id="experience" class="section">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-2">Experiência <span class="accent">Profissional</span></h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-2"><span data-i18n="experience.titlePrefix">Experiência </span><span class="accent" data-i18n="experience.titleAccent">Profissional</span></h2>
                 <div class="w-16 h-1 bg-accent mx-auto"></div>
-                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">
-                    Minha trajetória profissional e projetos relevantes em que trabalhei.
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto" data-i18n="experience.subtitle">
+                    Da modernização de legado à infraestrutura em produção — projetos reais, sem inflar números.
                 </p>
             </div>
-            
+
             <div class="space-y-12">
 
                 <div class="card p-8 animate-on-scroll">
                     <div class="flex flex-col md:flex-row">
                         <div class="md:w-1/4 mb-4 md:mb-0">
-                            <div class="text-sm text-gray-400">Pagelix</div>
-                            <div class="text-sm text-gray-600">2025 - Presente</div>
-                            <div class="text-lg font-semibold accent">Desenvolvedor Full Stack</div>
+                            <div class="text-sm text-gray-400 font-tech">Fontti</div>
+                            <div class="text-sm text-gray-600 font-tech">2025 - <span data-i18n="experience.present">Presente</span></div>
+                            <div class="text-lg font-semibold accent" data-i18n="experience.fontti.role">Founder &amp; Engenheiro de Software</div>
                         </div>
                         <div class="md:w-3/4 md:pl-8 border-l border-gray-700">
-                            <h4 class="text-xl font-semibold mb-2">Desenvolvimento de LangPages e MicroSaaS</h4>
-                            <p class="text-gray-300 mb-4">
-                                Atuo no desenvolvimento de Landing Pages otimizadas e MicroSaaS sob medida, utilizando um conjunto moderno de
-                                tecnologias, como Golang no backend e JavaScript, React e Angular no front-end. Meus projetos são implementados 
-                                tanto em infraestruturas locais (on-premise) quanto em ambientes de nuvem escaláveis, como AWS 
-                                e Hetzner, de acordo com a necessidade do cliente..
+                            <h4 class="text-xl font-semibold mb-2" data-i18n="experience.fontti.title">CRM com IA, Apps Financeiros e Landing Pages</h4>
+                            <p class="text-gray-300 mb-4" data-i18n="experience.fontti.text">
+                                Fundador e responsável técnico. Desenvolvo e evoluo a plataforma da Fontti — um CRM integrado com IA e WhatsApp, além de aplicativos de finanças e controle financeiro e landing pages customizadas — atuando em backend, frontend, bancos de dados, integrações, autenticação e regras de negócio. Também defino a arquitetura técnica e sustento a infraestrutura em containers na nuvem.
                             </p>
-                            <div class="flex flex-wrap gap-2">
+                            <div class="flex flex-wrap gap-2 font-tech">
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Angular</span>
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">JavaScript</span>
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">TypeScript</span>
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Go</span>
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PHP</span>
-                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">MySQL</span>
-                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">API REST</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Docker</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">GitHub Actions</span>
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">AWS</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PostgreSQL</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">WhatsApp API</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">IA</span>
                             </div>
                         </div>
                     </div>
@@ -399,26 +475,60 @@
                 <div class="card p-8 animate-on-scroll">
                     <div class="flex flex-col md:flex-row">
                         <div class="md:w-1/4 mb-4 md:mb-0">
-                            <div class="text-sm text-gray-400">Ar Consultoria</div>
-                            <div class="text-sm text-gray-600">2024 - Presente</div>
-                            <div class="text-lg font-semibold accent">Desenvolvedor Full Stack</div>
+                            <div class="text-sm text-gray-400 font-tech">Pagelix</div>
+                            <div class="text-sm text-gray-600 font-tech">2025 - <span data-i18n="experience.present">Presente</span></div>
+                            <div class="text-lg font-semibold accent" data-i18n="experience.pagelix.role">Founder &amp; Engenheiro de Software</div>
                         </div>
                         <div class="md:w-3/4 md:pl-8 border-l border-gray-700">
-                            <h4 class="text-xl font-semibold mb-2">Desenvolvimento de ERP</h4>
-                            <p class="text-gray-300 mb-4">
-                                Atuo diariamente com um ERP web voltado para o setor automobilístico, desenvolvido em AngularJS, 
-                                no qual realizo implementações e melhorias em diversos módulos do sistema. Além disso, também 
-                                contribuo em sistemas de gestão complementares, como ferramentas de sincronismo entre diferentes bases 
-                                de dados, scripts bancários e demais projetos fechados, garantindo soluções integradas, funcionais e alinhadas 
-                                às necessidades do negócio.
+                            <h4 class="text-xl font-semibold mb-2" data-i18n="experience.pagelix.title">Landing Pages, MicroSaaS e Infraestrutura Híbrida</h4>
+                            <p class="text-gray-300 mb-4" data-i18n="experience.pagelix.text">
+                                Fundador e responsável técnico. Desenvolvo e evoluo a plataforma da Pagelix — Landing Pages otimizadas e MicroSaaS sob medida — com Go no backend e JavaScript/React/Angular no front-end. Estruturo toda a infraestrutura de hospedagem (Docker Swarm, AWS, Hetzner), deploy automatizado, domínio/DNS/SSL/proxy reverso via Cloudflare, e defino a arquitetura técnica da solução.
                             </p>
-                            <div class="flex flex-wrap gap-2">
+                            <div class="flex flex-wrap gap-2 font-tech">
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">JavaScript</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">TypeScript</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Go</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PHP</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Docker Swarm</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">AWS</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Nginx</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Cloudflare</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">API REST</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-8 animate-on-scroll">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/4 mb-4 md:mb-0">
+                            <div class="text-sm text-gray-400 font-tech">Ar Consultoria</div>
+                            <div class="text-sm text-gray-600 font-tech">2024 - <span data-i18n="experience.present">Presente</span></div>
+                            <div class="text-lg font-semibold accent" data-i18n="experience.arconsultoria.role">Desenvolvedor de Software / DevOps</div>
+                        </div>
+                        <div class="md:w-3/4 md:pl-8 border-l border-gray-700">
+                            <h4 class="text-xl font-semibold mb-2" data-i18n="experience.arconsultoria.title">Desenvolvimento, Cloud e DevOps em Produção</h4>
+                            <p class="text-gray-300 mb-4" data-i18n="experience.arconsultoria.text">
+                                Atuação no desenvolvimento, manutenção e evolução de sistemas, APIs e infraestrutura de produção — de um ERP web para o setor automobilístico (AngularJS) a bases de dados legadas e modernas. Administro ambientes AWS (EC2, S3, CloudFront, Aurora/RDS, Load Balancer), containers em Docker Swarm (com Portainer e deploy via GitHub Actions/GHCR) e servidores Linux com Nginx, SSL e Cloudflare. Também sustento observabilidade com Grafana, Prometheus e SonarQube, e participo da evolução da arquitetura: saí de um modelo simples (EC2 → Nginx → aplicação) para uma stack distribuída (S3 + CloudFront → Load Balancer → Docker Swarm → EC2 → Aurora RDS) com múltiplas instâncias.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4 font-tech">
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">JavaScript</span>
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">TypeScript</span>
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PHP</span>
-                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">MySQL</span>
-                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">API REST</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">AngularJS</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Firebird</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PostgreSQL</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Docker Swarm</span>
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">AWS</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Nginx</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">GitHub Actions</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Grafana</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Prometheus</span>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="metric-placeholder">[MÉTRICA: uptime %]</span>
+                                <span class="metric-placeholder">[MÉTRICA: nº de sistemas em produção]</span>
+                                <span class="metric-placeholder">[MÉTRICA: economia de custo AWS %]</span>
                             </div>
                         </div>
                     </div>
@@ -427,17 +537,16 @@
                 <div class="card p-8 animate-on-scroll" style="animation-delay: 0.2s">
                     <div class="flex flex-col md:flex-row">
                         <div class="md:w-1/4 mb-4 md:mb-0">
-                            <div class="text-sm text-gray-400">Lógica Sistemas</div>
-                            <div class="text-sm text-gray-600">2023 - 2024</div>
-                            <div class="text-lg font-semibold accent">Líder Técnico</div>
+                            <div class="text-sm text-gray-400 font-tech">Lógica Sistemas</div>
+                            <div class="text-sm text-gray-600 font-tech">2023 - 2024</div>
+                            <div class="text-lg font-semibold accent" data-i18n="experience.logicalider.role">Líder Técnico</div>
                         </div>
                         <div class="md:w-3/4 md:pl-8 border-l border-gray-700">
-                            <h4 class="text-xl font-semibold mb-2">Projetos de Chatbots e BI</h4>
-                            <p class="text-gray-300 mb-4">
-                                Liderança técnica em projetos de chatbots para atendimento ao cliente e soluções de Business Intelligence, 
-                                coordenando equipe de desenvolvimento e garantindo a entrega de soluções de qualidade.
+                            <h4 class="text-xl font-semibold mb-2" data-i18n="experience.logicalider.title">Projetos de Chatbots e BI</h4>
+                            <p class="text-gray-300 mb-4" data-i18n="experience.logicalider.text">
+                                Liderança técnica em projetos de chatbots para atendimento ao cliente e soluções de Business Intelligence, coordenando equipe de desenvolvimento e garantindo a entrega de soluções de qualidade.
                             </p>
-                            <div class="flex flex-wrap gap-2">
+                            <div class="flex flex-wrap gap-2 font-tech">
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PHP</span>
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">JavaScript</span>
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">TypeScript</span>
@@ -453,20 +562,16 @@
                 <div class="card p-8 animate-on-scroll">
                     <div class="flex flex-col md:flex-row">
                         <div class="md:w-1/4 mb-4 md:mb-0">
-                            <div class="text-sm text-gray-400">Lógica Sistemas</div>
-                            <div class="text-sm text-gray-600">2020 - 2024</div>
-                            <div class="text-lg font-semibold accent">Desenvolvedor Full Stack</div>
+                            <div class="text-sm text-gray-400 font-tech">Lógica Sistemas</div>
+                            <div class="text-sm text-gray-600 font-tech">2020 - 2024</div>
+                            <div class="text-lg font-semibold accent" data-i18n="experience.logicadev.role">Desenvolvedor Full Stack</div>
                         </div>
                         <div class="md:w-3/4 md:pl-8 border-l border-gray-700">
-                            <h4 class="text-xl font-semibold mb-2">Desenvolvimento de ERP</h4>
-                            <p class="text-gray-300 mb-4">
-                                Atuei no desenvolvimento de chatbots, soluções de BI, integrações financeiras, 
-                                além da criação de sistemas robustos com infraestrutura de alta disponibilidade, 
-                                monitoramento e máquinas em nuvem. Também trabalhei com infraestrutura local, 
-                                realizando manutenção em bases de dados, criação de VPSs, ajustes de servidores, 
-                                criação de apps com FlutterFlow e integrações com ferramentas como e WhatsApp e emails
+                            <h4 class="text-xl font-semibold mb-2" data-i18n="experience.logicadev.title">Desenvolvimento de ERP</h4>
+                            <p class="text-gray-300 mb-4" data-i18n="experience.logicadev.text">
+                                Atuei no desenvolvimento de chatbots, soluções de BI, integrações financeiras, além da criação de sistemas robustos com infraestrutura de alta disponibilidade, monitoramento e máquinas em nuvem. Também trabalhei com infraestrutura local, realizando manutenção em bases de dados, criação de VPSs, ajustes de servidores, criação de apps com FlutterFlow e integrações com ferramentas como WhatsApp e e-mail.
                             </p>
-                            <div class="flex flex-wrap gap-2">
+                            <div class="flex flex-wrap gap-2 font-tech">
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PHP</span>
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">MySQL</span>
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PostgreSQL</span>
@@ -480,23 +585,94 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
-            
+
             <div class="mt-16">
-                <h3 class="text-2xl font-semibold mb-8 text-center">Projetos Destacados</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <h3 class="text-2xl font-semibold mb-8 text-center"><span data-i18n="projects.titlePrefix">Projetos </span><span class="accent" data-i18n="projects.titleAccent">Destacados</span></h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="card overflow-hidden animate-on-scroll">
+                        <div class="h-40 bg-gray-700 flex items-center justify-center">
+                            <i class="fas fa-file-invoice text-5xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-semibold mb-2" data-i18n="projects.nfe.title">API Fiscal — Emissão de NFe/NFCe</h4>
+                            <p class="text-gray-300 mb-4" data-i18n="projects.nfe.text">
+                                API para emissão e gestão de Notas Fiscais Eletrônicas (NFe) e Notas Fiscais de Consumidor Eletrônica (NFCe), consolidando o processo de notas destinadas para os clientes.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4 font-tech">
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PHP</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Docker</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">API REST</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">NFe</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">NFCe</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card overflow-hidden animate-on-scroll" style="animation-delay: 0.1s">
+                        <div class="h-40 bg-gray-700 flex items-center justify-center">
+                            <i class="fas fa-right-left text-5xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-semibold mb-2" data-i18n="projects.migrador.title">Migrador de Banco de Dados (NexusDB → SQLite)</h4>
+                            <p class="text-gray-300 mb-4" data-i18n="projects.migrador.text">
+                                Sistema em Delphi para migração de dados de bases NexusDB para SQLite, modernizando o armazenamento sem perda de histórico.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4 font-tech">
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Delphi</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">NexusDB</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">SQLite</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card overflow-hidden animate-on-scroll" style="animation-delay: 0.2s">
+                        <div class="h-40 bg-gray-700 flex items-center justify-center">
+                            <i class="fas fa-building-columns text-5xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-semibold mb-2" data-i18n="projects.bancario.title">Integrações Bancárias — Pix e Boleto</h4>
+                            <p class="text-gray-300 mb-4" data-i18n="projects.bancario.text">
+                                Integrações com bancos (Banco do Brasil, Sicredi, Sicoob) para emissão e conciliação de cobranças via Pix e boleto online.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4 font-tech">
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PHP</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">API REST</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Pix</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Boleto</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card overflow-hidden animate-on-scroll" style="animation-delay: 0.3s">
+                        <div class="h-40 bg-gray-700 flex items-center justify-center">
+                            <i class="fas fa-shield-halved text-5xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-semibold mb-2" data-i18n="projects.contingencia.title">Contingência de Webhooks e Liquidação Automática</h4>
+                            <p class="text-gray-300 mb-4" data-i18n="projects.contingencia.text">
+                                Rotinas automáticas de contingência para falhas em webhooks, garantindo execução e liquidação de títulos bancários mesmo em cenários de indisponibilidade, orquestradas com Go e n8n.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4 font-tech">
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Go</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">n8n</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Webhook</span>
+                                <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">API REST</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="card overflow-hidden animate-on-scroll">
                         <div class="h-40 bg-gray-700 flex items-center justify-center">
                             <i class="fas fa-desktop text-5xl"></i>
                         </div>
                         <div class="p-6">
-                            <h4 class="text-xl font-semibold mb-2">Sistemas de ERP</h4>
-                            <p class="text-gray-300 mb-4">
-                                Desenvolvimento de 2 sistemas ERP com foco na integração entre empresa 
-                                e cliente, otimizando processos e melhorando a comunicação entre as partes.
+                            <h4 class="text-xl font-semibold mb-2" data-i18n="projects.erp.title">Sistemas de ERP</h4>
+                            <p class="text-gray-300 mb-4" data-i18n="projects.erp.text">
+                                Desenvolvimento de 2 sistemas ERP com foco na integração entre empresa e cliente, otimizando processos e melhorando a comunicação entre as partes.
                             </p>
-                            <div class="flex flex-wrap gap-2 mb-4">
+                            <div class="flex flex-wrap gap-2 mb-4 font-tech">
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PHP</span>
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">Codeigniter</span>
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PostgreSQL</span>
@@ -510,18 +686,17 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="card overflow-hidden animate-on-scroll" style="animation-delay: 0.2s">
+
+                    <div class="card overflow-hidden animate-on-scroll" style="animation-delay: 0.1s">
                         <div class="h-40 bg-gray-700 flex items-center justify-center">
                             <i class="fas fa-mobile text-5xl"></i>
                         </div>
                         <div class="p-6">
-                            <h4 class="text-xl font-semibold mb-2">Aplicativo de assinante</h4>
-                            <p class="text-gray-300 mb-4">
-                                Aplicativo que permite ao usuário consultar boletos, acompanhar informações
-                                 de serviços e acessar dados relacionados de forma prática e centralizada.
+                            <h4 class="text-xl font-semibold mb-2" data-i18n="projects.app.title">Aplicativo de assinante</h4>
+                            <p class="text-gray-300 mb-4" data-i18n="projects.app.text">
+                                Aplicativo que permite ao usuário consultar boletos, acompanhar informações de serviços e acessar dados relacionados de forma prática e centralizada.
                             </p>
-                            <div class="flex flex-wrap gap-2 mb-4">
+                            <div class="flex flex-wrap gap-2 mb-4 font-tech">
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">FlutterFlow</span>
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PHP</span>
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">API REST</span>
@@ -529,38 +704,34 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </br>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="card overflow-hidden animate-on-scroll">
+
+                    <div class="card overflow-hidden animate-on-scroll" style="animation-delay: 0.2s">
                         <div class="h-40 bg-gray-700 flex items-center justify-center">
                             <i class="fas fa-chart-bar text-5xl"></i>
                         </div>
                         <div class="p-6">
-                            <h4 class="text-xl font-semibold mb-2">Sistema de BI</h4>
-                            <p class="text-gray-300 mb-4">
-                                Desenvolvimento de um sistema de Business Intelligence integrado ao ERP, 
-                                permitindo análises avançadas e dashboards personalizados.
+                            <h4 class="text-xl font-semibold mb-2" data-i18n="projects.bi.title">Sistema de BI</h4>
+                            <p class="text-gray-300 mb-4" data-i18n="projects.bi.text">
+                                Desenvolvimento de um sistema de Business Intelligence integrado ao ERP, permitindo análises avançadas e dashboards personalizados.
                             </p>
-                            <div class="flex flex-wrap gap-2 mb-4">
+                            <div class="flex flex-wrap gap-2 mb-4 font-tech">
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PHP</span>
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">MySQL</span>
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">JavaScript</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="card overflow-hidden animate-on-scroll" style="animation-delay: 0.2s">
+
+                    <div class="card overflow-hidden animate-on-scroll" style="animation-delay: 0.3s">
                         <div class="h-40 bg-gray-700 flex items-center justify-center">
                             <i class="fas fa-robot text-5xl"></i>
                         </div>
                         <div class="p-6">
-                            <h4 class="text-xl font-semibold mb-2">Chatbot para Atendimento</h4>
-                            <p class="text-gray-300 mb-4">
-                                Chatbot para automatização de atendimento ao cliente, 
-                                integrado com sistemas de CRM e ERP.
+                            <h4 class="text-xl font-semibold mb-2" data-i18n="projects.chatbot.title">Chatbot para Atendimento</h4>
+                            <p class="text-gray-300 mb-4" data-i18n="projects.chatbot.text">
+                                Chatbot para automatização de atendimento ao cliente, integrado com sistemas de CRM e ERP.
                             </p>
-                            <div class="flex flex-wrap gap-2 mb-4">
+                            <div class="flex flex-wrap gap-2 mb-4 font-tech">
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">PHP</span>
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">NodeJS</span>
                                 <span class="px-3 py-1 text-sm bg-gray-800 rounded-full">API REST</span>
@@ -574,52 +745,44 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section">
+    <section id="contact" class="section bg-gradient">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-2">Entre em <span class="accent">Contato</span></h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-2"><span data-i18n="contact.titlePrefix">Entre em </span><span class="accent" data-i18n="contact.titleAccent">Contato</span></h2>
                 <div class="w-16 h-1 bg-accent mx-auto"></div>
-                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">
-                    Tem algum projeto para tirar do papel? Mande uma mensagem!
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto" data-i18n="contact.subtitle">
+                    Aberto a conversas técnicas, colaborações e oportunidades internacionais. Chame no LinkedIn ou mande uma mensagem.
                 </p>
             </div>
-            
+
             <div class="flex flex-col md:flex-row gap-10">
                 <div class="md:w-1/2 animate-on-scroll">
                     <form onsubmit="enviarWhatsApp(event)" class="card p-6">
                         <div class="mb-4">
-                            <label for="name" class="block text-sm font-medium text-gray-400 mb-1">Nome</label>
+                            <label for="name" class="block text-sm font-medium text-gray-400 mb-1" data-i18n="contact.form.name">Nome</label>
                             <input type="text" id="name" class="w-full p-3 rounded-lg" placeholder="Seu nome">
                         </div>
-                        <!-- <div class="mb-4">
-                            <label for="email" class="block text-sm font-medium text-gray-400 mb-1">Email</label>
-                            <input type="email" id="email" class="w-full p-3 rounded-lg" placeholder="seu.email@exemplo.com">
-                        </div>
-                        <div class="mb-4">
-                            <label for="subject" class="block text-sm font-medium text-gray-400 mb-1">Assunto</label>
-                            <input type="text" id="subject" class="w-full p-3 rounded-lg" placeholder="Assunto da mensagem">
-                        </div> -->
                         <div class="mb-6">
-                            <label for="message" class="block text-sm font-medium text-gray-400 mb-1">Mensagem</label>
+                            <label for="message" class="block text-sm font-medium text-gray-400 mb-1" data-i18n="contact.form.message">Mensagem</label>
                             <textarea id="message" rows="5" class="w-full p-3 rounded-lg" placeholder="Sua mensagem..."></textarea>
                         </div>
-                        <button type="submit" class="btn-primary w-full py-3 px-4 rounded-lg font-semibold">
+                        <button type="submit" class="btn-primary w-full py-3 px-4 rounded-lg font-semibold" data-i18n="contact.form.submit">
                             Enviar Mensagem
                         </button>
                     </form>
                 </div>
-                
+
                 <div class="md:w-1/2 animate-on-scroll" style="animation-delay: 0.2s">
                     <div class="card p-6 mb-6">
-                        <h3 class="text-xl font-semibold mb-4">Informações de Contato</h3>
+                        <h3 class="text-xl font-semibold mb-4" data-i18n="contact.infoTitle">Informações de Contato</h3>
                         <div class="space-y-4">
                             <div class="flex items-center">
                                 <div class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center mr-4">
                                     <i class="fas fa-envelope text-accent"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-sm text-gray-400">Email</h4>
-                                    <p>viniciussidrim99@gmail.com</p>
+                                    <h4 class="text-sm text-gray-400" data-i18n="contact.email">Email</h4>
+                                    <p class="font-tech">contato@viniciussidrim.com.br</p>
                                 </div>
                             </div>
                             <div class="flex items-center">
@@ -627,8 +790,8 @@
                                     <i class="fas fa-phone text-accent"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-sm text-gray-400">Telefone</h4>
-                                    <p>(84) 99108-3435</p>
+                                    <h4 class="text-sm text-gray-400" data-i18n="contact.phone">Telefone</h4>
+                                    <p class="font-tech">+55 84 99670-1411</p>
                                 </div>
                             </div>
                             <div class="flex items-center">
@@ -636,26 +799,26 @@
                                     <i class="fas fa-map-marker-alt text-accent"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-sm text-gray-400">Localização</h4>
-                                    <p>Natal-RN | Brasil</p>
+                                    <h4 class="text-sm text-gray-400" data-i18n="contact.location">Localização</h4>
+                                    <p data-i18n="contact.locationValue">Natal-RN | Brasil</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="card p-6">
-                        <h3 class="text-xl font-semibold mb-4">Me Siga nas Redes</h3>
+                        <h3 class="text-xl font-semibold mb-4" data-i18n="contact.followTitle">Me Siga nas Redes</h3>
                         <div class="flex space-x-4">
-                            <a href="https://www.linkedin.com/in/vin%C3%ADcius-sidrim-b68a74142/" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon">
+                            <a href="https://www.linkedin.com/in/viniciussidrim/" target="_blank" rel="noopener" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon">
                                 <i class="fab fa-linkedin-in text-xl"></i>
                             </a>
-                            <a href="https://github.com/viniciussidrim" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon">
+                            <a href="https://github.com/viniciussidrim" target="_blank" rel="noopener" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon">
                                 <i class="fab fa-github text-xl"></i>
                             </a>
-                            <a href="https://x.com/viniciussidrim" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon">
+                            <a href="https://x.com/viniciussidrim" target="_blank" rel="noopener" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon">
                                 <i class="fab fa-twitter text-xl"></i>
                             </a>
-                            <a href="https://www.instagram.com/viniciusdsidrim/" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon">
+                            <a href="https://www.instagram.com/viniciusdsidrim/" target="_blank" rel="noopener" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon">
                                 <i class="fab fa-instagram text-xl"></i>
                             </a>
                         </div>
@@ -670,61 +833,269 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
-                    <a href="#home" class="text-2xl font-bold">
+                    <a href="#home" class="text-2xl font-bold font-tech">
                         <span class="text-white">&lt;</span>
                         <span class="accent">VS</span>
                         <span class="text-white">/&gt;</span>
                     </a>
-                    <p class="text-gray-400 mt-2">Desenvolvedor Full Stack</p>
+                    <p class="text-gray-400 mt-2" data-i18n="footer.tagline">Engenheiro de Software | Infraestrutura e Backend</p>
                 </div>
                 <div class="flex flex-col items-center md:items-end">
-                    <p class="text-gray-400">&copy; 2025 Vinícius Sidrim. Todos os direitos reservados.</p>
-                    <!-- <div class="flex space-x-4 mt-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Termos</a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacidade</a>
-                    </div> -->
+                    <p class="text-gray-400"><span data-i18n="footer.copyright">&copy; 2026 Vinícius Sidrim. Todos os direitos reservados.</span></p>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
+        const i18n = {
+            pt: {
+                'nav.home': 'Home',
+                'nav.solutions': 'Soluções',
+                'nav.about': 'Sobre',
+                'nav.skills': 'Habilidades',
+                'nav.experience': 'Experiência',
+                'nav.contact': 'Contato',
+                'hero.greeting': 'Olá, sou',
+                'hero.role': 'Engenheiro de Software — Infraestrutura Híbrida & Modernização de Sistemas Legados',
+                'hero.description': 'Sustento sistemas críticos escritos há décadas — bancos Firebird, ERPs legados — e a infraestrutura moderna que promete substituí-los: AWS a fundo, Docker Swarm, Linux e automação em Go e JavaScript. A maioria dos times cloud-native não sabe lidar com legado; a maioria de quem sustenta legado não domina infra moderna. Eu transito nas duas pontas sem derrubar produção.',
+                'hero.ctaPrimary': 'Falar no LinkedIn',
+                'hero.ctaSecondary': 'O que eu resolvo',
+                'solutions.titlePrefix': 'O que eu ',
+                'solutions.titleAccent': 'resolvo',
+                'solutions.subtitle': 'Três frentes onde entrego valor real, sem promessas genéricas de agência.',
+                'solutions.card1.title': 'Modernização de Sistemas Legados',
+                'solutions.card1.text': 'Bancos Firebird e ERPs que não podem parar. Modernizo camada por camada, sem big-bang rewrite e sem colocar a operação em risco.',
+                'solutions.card2.title': 'Infraestrutura em Produção',
+                'solutions.card2.text': 'Docker Swarm, AWS e Hetzner sustentando sistemas críticos 24/7, com monitoramento via Grafana e deploy automatizado.',
+                'solutions.card3.title': 'Automação & Integrações',
+                'solutions.card3.text': 'Integrações entre ERP, CRM e gateways fiscais/bancários, eliminando processos manuais e conectando sistemas que nunca foram feitos para conversar entre si.',
+                'about.titlePrefix': 'Sobre ',
+                'about.titleAccent': 'Mim',
+                'about.heading': 'Quem sou eu?',
+                'about.p1': 'Sou Engenheiro de Software especializado em infraestrutura híbrida: sustento sistemas críticos legados — bancos Firebird, ERPs antigos — e a stack moderna que promete substituí-los, com AWS a fundo, Docker Swarm e Linux no dia a dia. Sou a ponte entre os dois mundos.',
+                'about.p2': 'No dia a dia trabalho com Go, PHP, TypeScript e Node.js no backend, PostgreSQL, MySQL e Firebird como bancos, e Docker Swarm, AWS e Hetzner como infraestrutura — sempre priorizando estabilidade acima de modismo.',
+                'about.p3': 'Atuei como líder técnico em projetos de Business Intelligence, chatbots e integrações externas, e hoje sustento infraestrutura de alta disponibilidade para sistemas que não podem cair.',
+                'about.card1.title': 'Desenvolvimento',
+                'about.card1.text': 'Aplicações web e APIs',
+                'about.card2.title': 'Banco de Dados',
+                'about.card2.text': 'Legado e moderno, na mesma stack',
+                'about.card3.title': 'DevOps',
+                'about.card3.text': 'Infraestrutura e CI/CD',
+                'about.card4.title': 'Liderança',
+                'about.card4.text': 'Gestão de Projetos',
+                'skills.titlePrefix': 'Minhas ',
+                'skills.titleAccent': 'Habilidades',
+                'skills.subtitle': 'Tecnologias que sustentam desde bancos legados até infraestrutura cloud em produção.',
+                'skills.otherTitle': 'Outras tecnologias',
+                'skills.databasesTitle': 'Bancos de Dados',
+                'skills.cloudDevopsTitle': 'Cloud, DevOps & Observabilidade',
+                'experience.titlePrefix': 'Experiência ',
+                'experience.titleAccent': 'Profissional',
+                'experience.subtitle': 'Da modernização de legado à infraestrutura em produção — projetos reais, sem inflar números.',
+                'experience.present': 'Presente',
+                'experience.fontti.role': 'Founder & Engenheiro de Software',
+                'experience.fontti.title': 'CRM com IA, Apps Financeiros e Landing Pages',
+                'experience.fontti.text': 'Fundador e responsável técnico. Desenvolvo e evoluo a plataforma da Fontti — um CRM integrado com IA e WhatsApp, além de aplicativos de finanças e controle financeiro e landing pages customizadas — atuando em backend, frontend, bancos de dados, integrações, autenticação e regras de negócio. Também defino a arquitetura técnica e sustento a infraestrutura em containers na nuvem.',
+                'experience.pagelix.role': 'Founder & Engenheiro de Software',
+                'experience.pagelix.title': 'Landing Pages, MicroSaaS e Infraestrutura Híbrida',
+                'experience.pagelix.text': 'Fundador e responsável técnico. Desenvolvo e evoluo a plataforma da Pagelix — Landing Pages otimizadas e MicroSaaS sob medida — com Go no backend e JavaScript/React/Angular no front-end. Estruturo toda a infraestrutura de hospedagem (Docker Swarm, AWS, Hetzner), deploy automatizado, domínio/DNS/SSL/proxy reverso via Cloudflare, e defino a arquitetura técnica da solução.',
+                'experience.arconsultoria.role': 'Desenvolvedor de Software / DevOps',
+                'experience.arconsultoria.title': 'Desenvolvimento, Cloud e DevOps em Produção',
+                'experience.arconsultoria.text': 'Atuação no desenvolvimento, manutenção e evolução de sistemas, APIs e infraestrutura de produção — de um ERP web para o setor automobilístico (AngularJS) a bases de dados legadas e modernas. Administro ambientes AWS (EC2, S3, CloudFront, Aurora/RDS, Load Balancer), containers em Docker Swarm (com Portainer e deploy via GitHub Actions/GHCR) e servidores Linux com Nginx, SSL e Cloudflare. Também sustento observabilidade com Grafana, Prometheus e SonarQube, e participo da evolução da arquitetura: saí de um modelo simples (EC2 → Nginx → aplicação) para uma stack distribuída (S3 + CloudFront → Load Balancer → Docker Swarm → EC2 → Aurora RDS) com múltiplas instâncias.',
+                'experience.logicalider.role': 'Líder Técnico',
+                'experience.logicalider.title': 'Projetos de Chatbots e BI',
+                'experience.logicalider.text': 'Liderança técnica em projetos de chatbots para atendimento ao cliente e soluções de Business Intelligence, coordenando equipe de desenvolvimento e garantindo a entrega de soluções de qualidade.',
+                'experience.logicadev.role': 'Desenvolvedor Full Stack',
+                'experience.logicadev.title': 'Desenvolvimento de ERP',
+                'experience.logicadev.text': 'Atuei no desenvolvimento de chatbots, soluções de BI, integrações financeiras, além da criação de sistemas robustos com infraestrutura de alta disponibilidade, monitoramento e máquinas em nuvem. Também trabalhei com infraestrutura local, realizando manutenção em bases de dados, criação de VPSs, ajustes de servidores, criação de apps com FlutterFlow e integrações com ferramentas como WhatsApp e e-mail.',
+                'projects.titlePrefix': 'Projetos ',
+                'projects.titleAccent': 'Destacados',
+                'projects.erp.title': 'Sistemas de ERP',
+                'projects.erp.text': 'Desenvolvimento de 2 sistemas ERP com foco na integração entre empresa e cliente, otimizando processos e melhorando a comunicação entre as partes.',
+                'projects.app.title': 'Aplicativo de assinante',
+                'projects.app.text': 'Aplicativo que permite ao usuário consultar boletos, acompanhar informações de serviços e acessar dados relacionados de forma prática e centralizada.',
+                'projects.bi.title': 'Sistema de BI',
+                'projects.bi.text': 'Desenvolvimento de um sistema de Business Intelligence integrado ao ERP, permitindo análises avançadas e dashboards personalizados.',
+                'projects.chatbot.title': 'Chatbot para Atendimento',
+                'projects.chatbot.text': 'Chatbot para automatização de atendimento ao cliente, integrado com sistemas de CRM e ERP.',
+                'projects.nfe.title': 'API Fiscal — Emissão de NFe/NFCe',
+                'projects.nfe.text': 'API para emissão e gestão de Notas Fiscais Eletrônicas (NFe) e Notas Fiscais de Consumidor Eletrônica (NFCe), consolidando o processo de notas destinadas para os clientes.',
+                'projects.migrador.title': 'Migrador de Banco de Dados (NexusDB → SQLite)',
+                'projects.migrador.text': 'Sistema em Delphi para migração de dados de bases NexusDB para SQLite, modernizando o armazenamento sem perda de histórico.',
+                'projects.bancario.title': 'Integrações Bancárias — Pix e Boleto',
+                'projects.bancario.text': 'Integrações com bancos (Banco do Brasil, Sicredi, Sicoob) para emissão e conciliação de cobranças via Pix e boleto online.',
+                'projects.contingencia.title': 'Contingência de Webhooks e Liquidação Automática',
+                'projects.contingencia.text': 'Rotinas automáticas de contingência para falhas em webhooks, garantindo execução e liquidação de títulos bancários mesmo em cenários de indisponibilidade, orquestradas com Go e n8n.',
+                'contact.titlePrefix': 'Entre em ',
+                'contact.titleAccent': 'Contato',
+                'contact.subtitle': 'Aberto a conversas técnicas, colaborações e oportunidades internacionais. Chame no LinkedIn ou mande uma mensagem.',
+                'contact.form.name': 'Nome',
+                'contact.form.message': 'Mensagem',
+                'contact.form.submit': 'Enviar Mensagem',
+                'contact.infoTitle': 'Informações de Contato',
+                'contact.email': 'Email',
+                'contact.phone': 'Telefone',
+                'contact.location': 'Localização',
+                'contact.locationValue': 'Natal-RN | Brasil',
+                'contact.followTitle': 'Me Siga nas Redes',
+                'footer.tagline': 'Engenheiro de Software | Infraestrutura e Backend',
+                'footer.copyright': '© 2026 Vinícius Sidrim. Todos os direitos reservados.',
+                'meta.title': 'Vinícius Sidrim | Engenheiro de Software — Infra & Backend'
+            },
+            en: {
+                'nav.home': 'Home',
+                'nav.solutions': 'Solutions',
+                'nav.about': 'About',
+                'nav.skills': 'Skills',
+                'nav.experience': 'Experience',
+                'nav.contact': 'Contact',
+                'hero.greeting': "Hi, I'm",
+                'hero.role': 'Software Engineer — Hybrid Infrastructure & Legacy System Modernization',
+                'hero.description': "I keep decades-old critical systems running — Firebird databases, legacy ERPs — while owning the modern infrastructure meant to replace them: deep AWS, Docker Swarm, Linux, and automation in Go and JavaScript. Most cloud-native teams can't handle legacy; most people who maintain legacy don't master modern infra. I work both ends without taking production down.",
+                'hero.ctaPrimary': 'Talk on LinkedIn',
+                'hero.ctaSecondary': 'What I solve',
+                'solutions.titlePrefix': 'What I ',
+                'solutions.titleAccent': 'solve',
+                'solutions.subtitle': 'Three areas where I deliver real value — no generic agency promises.',
+                'solutions.card1.title': 'Legacy System Modernization',
+                'solutions.card1.text': "Firebird databases and ERPs that can't go down. I modernize layer by layer — no big-bang rewrites, no risking the operation.",
+                'solutions.card2.title': 'Production Infrastructure',
+                'solutions.card2.text': 'Docker Swarm, AWS and Hetzner keeping critical systems running 24/7, monitored with Grafana and deployed on automated pipelines.',
+                'solutions.card3.title': 'Automation & Integrations',
+                'solutions.card3.text': 'ERP, CRM and fiscal/banking gateway integrations that remove manual work and connect systems never meant to talk to each other.',
+                'about.titlePrefix': 'About ',
+                'about.titleAccent': 'Me',
+                'about.heading': 'Who am I?',
+                'about.p1': "I'm a Software Engineer specialized in hybrid infrastructure: I keep legacy-critical systems running — Firebird databases, old ERPs — alongside the modern stack meant to replace them, with deep AWS, Docker Swarm and Linux day to day. I'm the bridge between both worlds.",
+                'about.p2': 'Day to day I work with Go, PHP, TypeScript and Node.js on the backend, PostgreSQL, MySQL and Firebird as databases, and Docker Swarm, AWS and Hetzner as infrastructure — always prioritizing stability over hype.',
+                'about.p3': "I've led technical teams on Business Intelligence, chatbot and third-party integration projects, and today I maintain high-availability infrastructure for systems that can't go down.",
+                'about.card1.title': 'Development',
+                'about.card1.text': 'Web apps and APIs',
+                'about.card2.title': 'Databases',
+                'about.card2.text': 'Legacy and modern, same stack',
+                'about.card3.title': 'DevOps',
+                'about.card3.text': 'Infrastructure and CI/CD',
+                'about.card4.title': 'Leadership',
+                'about.card4.text': 'Project management',
+                'skills.titlePrefix': 'My ',
+                'skills.titleAccent': 'Skills',
+                'skills.subtitle': 'Technologies spanning legacy databases to production cloud infrastructure.',
+                'skills.otherTitle': 'Other technologies',
+                'skills.databasesTitle': 'Databases',
+                'skills.cloudDevopsTitle': 'Cloud, DevOps & Observability',
+                'experience.titlePrefix': 'Professional ',
+                'experience.titleAccent': 'Experience',
+                'experience.subtitle': 'From legacy modernization to production infrastructure — real projects, no inflated numbers.',
+                'experience.present': 'Present',
+                'experience.fontti.role': 'Founder & Software Engineer',
+                'experience.fontti.title': 'AI-Powered CRM, Finance Apps & Landing Pages',
+                'experience.fontti.text': "Founder and technical lead. I build and evolve the Fontti platform — an AI and WhatsApp-integrated CRM, plus personal finance and financial control apps and custom landing pages — working across backend, frontend, databases, integrations, authentication and business rules. I also define the technical architecture and run the cloud container infrastructure.",
+                'experience.pagelix.role': 'Founder & Software Engineer',
+                'experience.pagelix.title': 'Landing Pages, MicroSaaS & Hybrid Infrastructure',
+                'experience.pagelix.text': "Founder and technical lead. I build and evolve the Pagelix platform — optimized Landing Pages and custom MicroSaaS — with Go on the backend and JavaScript/React/Angular on the front-end. I run the whole hosting infrastructure (Docker Swarm, AWS, Hetzner), automated deploys, domain/DNS/SSL/reverse proxy via Cloudflare, and define the solution's technical architecture.",
+                'experience.arconsultoria.role': 'Software Developer / DevOps',
+                'experience.arconsultoria.title': 'Development, Cloud & DevOps in Production',
+                'experience.arconsultoria.text': "Development, maintenance and evolution of systems, APIs and production infrastructure — from a web ERP for the automotive sector (AngularJS) to legacy and modern databases. I administer AWS environments (EC2, S3, CloudFront, Aurora/RDS, Load Balancer), Docker Swarm containers (with Portainer and GitHub Actions/GHCR deploys) and Linux servers with Nginx, SSL and Cloudflare. I also maintain observability with Grafana, Prometheus and SonarQube, and take part in the architecture's evolution: moving from a simple model (EC2 → Nginx → app) to a distributed stack (S3 + CloudFront → Load Balancer → Docker Swarm → EC2 → Aurora RDS) with multiple instances.",
+                'experience.logicalider.role': 'Technical Lead',
+                'experience.logicalider.title': 'Chatbot & BI Projects',
+                'experience.logicalider.text': 'Technical leadership on customer service chatbot projects and Business Intelligence solutions, coordinating a development team and ensuring quality delivery.',
+                'experience.logicadev.role': 'Full Stack Developer',
+                'experience.logicadev.title': 'ERP Development',
+                'experience.logicadev.text': "I worked on chatbots, BI solutions, financial integrations, and building robust systems with high-availability infrastructure, monitoring and cloud machines. I also worked with on-premise infrastructure — database maintenance, VPS provisioning, server tuning, FlutterFlow apps, and integrations with tools like WhatsApp and email.",
+                'projects.titlePrefix': 'Featured ',
+                'projects.titleAccent': 'Projects',
+                'projects.erp.title': 'ERP Systems',
+                'projects.erp.text': 'Built 2 ERP systems focused on integration between company and client, optimizing processes and improving communication between both sides.',
+                'projects.app.title': 'Subscriber App',
+                'projects.app.text': 'App that lets users check invoices, track service information and access related data in a practical, centralized way.',
+                'projects.bi.title': 'BI System',
+                'projects.bi.text': 'Built a Business Intelligence system integrated with the ERP, enabling advanced analysis and custom dashboards.',
+                'projects.chatbot.title': 'Customer Service Chatbot',
+                'projects.chatbot.text': 'Chatbot for automating customer service, integrated with CRM and ERP systems.',
+                'projects.nfe.title': 'Fiscal API — NFe/NFCe Invoicing',
+                'projects.nfe.text': 'API for issuing and managing Brazilian electronic invoices (NFe) and consumer electronic invoices (NFCe), consolidating the invoicing process for clients.',
+                'projects.migrador.title': 'Database Migrator (NexusDB → SQLite)',
+                'projects.migrador.text': 'Delphi system for migrating data from NexusDB databases to SQLite, modernizing storage without losing historical data.',
+                'projects.bancario.title': 'Banking Integrations — Pix & Boleto',
+                'projects.bancario.text': 'Integrations with banks (Banco do Brasil, Sicredi, Sicoob) for issuing and reconciling payments via Pix and online boleto.',
+                'projects.contingencia.title': 'Webhook Contingency & Automated Settlement',
+                'projects.contingencia.text': 'Automated contingency routines for webhook failures, ensuring execution and settlement of bank titles even during downtime, orchestrated with Go and n8n.',
+                'contact.titlePrefix': 'Get in ',
+                'contact.titleAccent': 'Touch',
+                'contact.subtitle': 'Open to technical conversations, collaborations and international opportunities. Reach out on LinkedIn or send a message.',
+                'contact.form.name': 'Name',
+                'contact.form.message': 'Message',
+                'contact.form.submit': 'Send Message',
+                'contact.infoTitle': 'Contact Information',
+                'contact.email': 'Email',
+                'contact.phone': 'Phone',
+                'contact.location': 'Location',
+                'contact.locationValue': 'Natal-RN | Brazil',
+                'contact.followTitle': 'Follow Me',
+                'footer.tagline': 'Software Engineer | Infrastructure & Backend',
+                'footer.copyright': '© 2026 Vinícius Sidrim. All rights reserved.',
+                'meta.title': 'Vinícius Sidrim | Software Engineer — Infra & Backend'
+            }
+        };
+
+        function applyLang(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[lang][key] !== undefined) el.textContent = i18n[lang][key];
+            });
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+            document.title = i18n[lang]['meta.title'];
+            document.querySelectorAll('.lang-toggle-btn').forEach(btn => {
+                btn.textContent = lang === 'pt' ? 'EN' : 'PT';
+            });
+            try { localStorage.setItem('lang', lang); } catch (e) { /* storage unavailable */ }
+            currentLang = lang;
+        }
+
+        let currentLang = 'pt';
+        try { currentLang = localStorage.getItem('lang') || 'pt'; } catch (e) { /* storage unavailable */ }
+
+        document.querySelectorAll('.lang-toggle-btn').forEach(btn => {
+            btn.addEventListener('click', () => applyLang(currentLang === 'pt' ? 'en' : 'pt'));
+        });
+        applyLang(currentLang);
 
         // envio zap
         function enviarWhatsApp(event) {
             event.preventDefault();
             const nome = document.getElementById('name').value;
             const mesage = document.getElementById('message').value;
-            const numero = '5584991083435';
-    
+            const numero = '5584996701411';
+
             const mensagem = `Olá, Me chamo ${nome}, gostaria de conversar contigo sobre essa ideia: ${mesage}.`;
             const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
-    
+
             window.open(url, '_blank');
         }
 
         // Mobile menu toggle
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        
+
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
-        
+
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
+
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
-                
+
                 if (targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
-                    
+
                     // Close mobile menu if it's open
                     if (!mobileMenu.classList.contains('hidden')) {
                         mobileMenu.classList.add('hidden');
@@ -732,30 +1103,30 @@
                 }
             });
         });
-        
+
         // Animation on scroll
         const animateElements = document.querySelectorAll('.animate-on-scroll');
-        
+
         function checkIfInView() {
             const windowHeight = window.innerHeight;
             const windowTopPosition = window.scrollY;
             const windowBottomPosition = windowTopPosition + windowHeight;
-            
+
             animateElements.forEach(element => {
                 const elementHeight = element.offsetHeight;
                 const elementTopPosition = element.offsetTop;
                 const elementBottomPosition = elementTopPosition + elementHeight;
-                
+
                 // Check if element is in view
                 if (
-                    elementBottomPosition >= windowTopPosition && 
+                    elementBottomPosition >= windowTopPosition &&
                     elementTopPosition <= windowBottomPosition - 100
                 ) {
                     element.classList.add('animated');
                 }
             });
         }
-        
+
         // Initial check
         window.addEventListener('load', checkIfInView);
         window.addEventListener('scroll', checkIfInView);
